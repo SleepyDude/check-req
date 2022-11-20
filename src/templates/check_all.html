@@ -8,19 +8,43 @@
     <title>Request Checker</title>
 </head>
 <body>
+
+{% if headers %}
     <h2>Headers:</h2>
-    <table style="width: 100%">
+    <table style="width: 100%" class="hdr_table">
         <tr>
-            <th>name</th>
-            <th>value</th>
+            <th class="hdr_table">name</th>
+            <th class="hdr_table">value</th>
         </tr>
 
-    {% for header in headers %}
+    {% for pair in headers %}
         <tr>
-            <td>{{header.name}}</td>
-            <td>{{header.value}}</td>
+            <td class="hdr_table green">{{pair[0]}}</td>
+            <td class="hdr_table green">{{pair[1]}}</td>
         </tr>
     {% endfor %}
     </table>
+{% else %}
+    <h2>No headers</h2>
+{% endif %}
+
+{% if cookies %}
+
+    <h2>Cookies:</h2>
+    <table style="width: 100%" class="hdr_table">
+        <tr>
+            <th class="hdr_table">name</th>
+            <th class="hdr_table">value</th>
+        </tr>
+    {% for pair in cookies %}
+        <tr>
+            <td class="hdr_table green">{{pair[0]}}</td>
+            <td class="hdr_table green">{{pair[1]}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <h2>No cookies</h2>
+{% endif %}
 </body>
 </html>
